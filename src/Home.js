@@ -1,17 +1,17 @@
 import React from "react";
+import "./Home.css";
 
 function Home({ inventory }) {
   return (
     <div>
-      Home
-      <h1>Our Shit</h1>
-      <ul>
+      <h1 className="title">Our Shit</h1>
+      <ul className="list">
         {inventory.map(({ id, title, price, image }) => {
           return (
-            <li key={id}>
-              <h3>{title}</h3>
-              <p>{price}</p>
-              <img src={image} alt={`Image of ${title}`} />
+            <li key={id} className="list-item">
+              <h3 className="title">{title}</h3>
+              <p className="price">{`$${price}`}</p>
+              <img src={image} alt={`Image of ${title}`} className="image" />
             </li>
           );
         })}
