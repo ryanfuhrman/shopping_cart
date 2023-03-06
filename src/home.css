@@ -3,14 +3,3 @@
   flex-direction: row;
   flex-wrap: wrap;
 }
-
-.list-item {
-  list-style: none;
-  width: 200px;
-  height: 400px;
-}
-
-.image {
-  width: 150px;
-  height: auto;
-}
