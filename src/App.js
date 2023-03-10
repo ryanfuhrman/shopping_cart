@@ -8,6 +8,7 @@ import React, { useState, useEffect } from "react";
 
 function App() {
   const [shoppingData, setShoppingData] = useState([]);
+  const [cartItems, setCartItems] = useState([]);
 
   useEffect(() => {
     async function getData() {
@@ -21,14 +22,34 @@ function App() {
     getData();
   }, []);
 
+  function handleCartItems(id) {
+    console.log(id);
+    setCartItems([...cartItems, id]);
+    console.log(`cartItems: ${cartItems}`);
+  }
+
   return (
     <div className="App">
       <Router>
         <Navbar />
         <Routes>
-          <Route path="/" element={<Home inventory={shoppingData} />} />
-          <Route path="/cart" element={<Cart />} />
-          <Route path="/item/:id" element={<ItemDetail />} />
+          <Route
+            path="/"
+            element={
+              <Home
+                inventory={shoppingData}
+                handleCartItems={handleCartItems}
+              />
+            }
+          />
+          <Route
+            path="/cart"
+            element={<Cart handleCartItems={handleCartItems} />}
+          />
+          <Route
+            path="/item/:id"
+            element={<ItemDetail handleCartItems={handleCartItems} />}
+          />
         </Routes>
       </Router>
     </div>

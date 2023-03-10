@@ -1,9 +1,10 @@
 import React from "react";
-import "./Item.css";
+import "./ItemDetail.css";
+import CartButtons from "./CartButtons";
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 
-function ItemDetail() {
+function ItemDetail({ handleCartItems }) {
   const { id } = useParams();
 
   const [item, setItem] = useState([]);
@@ -21,10 +22,15 @@ function ItemDetail() {
   };
 
   return !isLoading ? (
-    <div className="ItemDetail">
-      <h1>{item.title}</h1>
-      <p>{`$${item.price}`}</p>
-      <img src={item.image} />
+    <div className="item-detail">
+      <h1 className="title">{item.title}</h1>
+      <p className="price">{`$${item.price}`}</p>
+      <img src={item.image} className="image" />
+      <CartButtons
+        cartID={id}
+        itemName={item.title}
+        handleCartItems={handleCartItems}
+      />
     </div>
   ) : (
     <p>Loading...</p>

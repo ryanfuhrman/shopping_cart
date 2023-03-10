@@ -1,0 +1,25 @@
+.cart-buttons {
+  height: 50px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.cart-count-buttons {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: space-between;
+}
+
+.cart-input {
+  width: 50px;
+  margin: 0 10px;
+  -webkit-appearance: none;
+  -moz-appearance: textfield;
+}
+
+.add-to-cart-btn {
+  width: 100px;
+}
