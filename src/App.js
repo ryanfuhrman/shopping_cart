@@ -8,7 +8,6 @@ import React, { useState, useEffect } from "react";
 
 function App() {
   const [shoppingData, setShoppingData] = useState([]);
-  const [cartItems, setCartItems] = useState([]);
 
   useEffect(() => {
     async function getData() {
@@ -22,9 +21,17 @@ function App() {
     getData();
   }, []);
 
-  function handleCartItems(id) {
-    setCartItems([...cartItems, id]);
-    console.log(cartItems);
+  const [cartItems, setCartItems] = useState(
+    JSON.parse(localStorage.getItem("items")) || []
+  );
+
+  useEffect(() => {
+    localStorage.setItem("items", JSON.stringify(cartItems));
+    console.log(JSON.parse(localStorage.getItem("items")));
+  }, [cartItems]);
+
+  function handleCartItems(id, count) {
+    setCartItems([...cartItems, { id, count }]);
   }
 
   return (
