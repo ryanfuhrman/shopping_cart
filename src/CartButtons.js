@@ -1,9 +1,10 @@
-import React, { useState } from "react";
-import { useParams } from "react-router-dom";
+import React, { useState, useEffect } from "react";
+// import { useParams } from "react-router-dom";
 import "./CartButtons.css";
 
 function Item({ handleCartItems }) {
-  const { id } = useParams();
+  // useParams doesn't work for Items on Home
+  // const { id } = useParams();
   const [cart, setCart] = useState(0);
 
   function handleCartValue(e) {
@@ -22,8 +23,9 @@ function Item({ handleCartItems }) {
 
   function addToCart(e) {
     e.preventDefault();
-    console.log(id);
-    handleCartItems(id);
+    const count = e.target[1].value;
+    const id = e.target.parentElement.id;
+    handleCartItems(id, count);
   }
 
   return (
