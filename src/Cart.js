@@ -1,6 +1,9 @@
-import React from "react";
+import React, { useEffect } from "react";
 
 function Cart({ cart }) {
+  useEffect(() => {
+    console.log(cart);
+  }, []);
   return (
     <div>
       {cart.map((id) => {
