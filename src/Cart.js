@@ -1,10 +1,10 @@
 import React from "react";
 
-function Cart({ cartItems }) {
+function Cart({ cart }) {
   return (
     <div>
-      {cartItems.map((item) => {
-        return <li>{item.title}</li>;
+      {cart.map((id) => {
+        return <li key={id}>{id}</li>;
       })}
     </div>
   );

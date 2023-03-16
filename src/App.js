@@ -23,9 +23,8 @@ function App() {
   }, []);
 
   function handleCartItems(id) {
-    console.log(id);
     setCartItems([...cartItems, id]);
-    console.log(`cartItems: ${cartItems}`);
+    console.log(cartItems);
   }
 
   return (
@@ -42,10 +41,7 @@ function App() {
               />
             }
           />
-          <Route
-            path="/cart"
-            element={<Cart handleCartItems={handleCartItems} />}
-          />
+          <Route path="/cart" element={<Cart cart={cartItems} />} />
           <Route
             path="/item/:id"
             element={<ItemDetail handleCartItems={handleCartItems} />}

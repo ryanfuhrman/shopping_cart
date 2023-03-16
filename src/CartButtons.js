@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useParams } from "react-router-dom";
 import "./CartButtons.css";
 
-function Item({ cartID, itemName, handleCartItems }) {
+function Item({ handleCartItems }) {
   const { id } = useParams();
   const [cart, setCart] = useState(0);
 
@@ -22,6 +22,7 @@ function Item({ cartID, itemName, handleCartItems }) {
 
   function addToCart(e) {
     e.preventDefault();
+    console.log(id);
     handleCartItems(id);
   }
 
