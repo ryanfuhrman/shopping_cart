@@ -1,10 +1,10 @@
 .item {
   list-style: none;
   width: 200px;
-  height: 400px;
+  height: auto;
+  margin-bottom: 20px;
 }
 
 .image {
-  width: 150px;
-  height: auto;
+  height: 100px;
 }
