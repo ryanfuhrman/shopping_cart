@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import "./Item.css";
 import { Link } from "react-router-dom";
 import CartButtons from "./CartButtons";
@@ -7,7 +7,7 @@ function Item({ item, handleCartItems }) {
   const { id, title, price, image } = item;
 
   return (
-    <li key={id} className="item">
+    <li key={id} id={id} className="item">
       <Link to={`/item/${id}`}>
         <h3 className="title">{title}</h3>
         <p className="price">{`$${price}`}</p>
