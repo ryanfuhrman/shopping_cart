@@ -22,7 +22,7 @@ function ItemDetail({ handleCartItems }) {
   };
 
   return !isLoading ? (
-    <div className="item-detail">
+    <div className="item-detail" id={id}>
       <h1 className="title">{item.title}</h1>
       <p className="price">{`$${item.price}`}</p>
       <img src={item.image} className="image" />
