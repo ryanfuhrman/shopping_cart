@@ -1,14 +1,38 @@
-import React, { useEffect } from "react";
+import React, { useState, useEffect } from "react";
 
-function Cart({ cart }) {
+function Cart({ cartItems }) {
+  const [cartList, setCartList] = useState([]);
+
   useEffect(() => {
-    console.log(cart);
+    console.log(cartItems);
+    cartItems.map((item) => {
+      const fetchData = async () => {
+        const response = await fetch(
+          `https://api.escuelajs.co/api/v1/products/${item.id}`
+        );
+        const data = await response.json();
+        setCartList((prevList) => [...prevList, data]);
+      };
+
+      fetchData();
+    });
   }, []);
+
+  useEffect(() => {
+    console.log(cartList);
+  }, [cartList]);
+
   return (
     <div>
-      {cart.map((id) => {
-        return <li key={id}>{id}</li>;
-      })}
+      <ul>
+        {cartList.map((item) => {
+          return (
+            <li key={item.count} id={item.count}>
+              {item.count}
+            </li>
+          );
+        })}
+      </ul>
     </div>
   );
 }
