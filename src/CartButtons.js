@@ -3,8 +3,6 @@ import React, { useState, useEffect } from "react";
 import "./CartButtons.css";
 
 function Item({ handleCartItems }) {
-  // useParams doesn't work for Items on Home
-  // const { id } = useParams();
   const [cart, setCart] = useState(0);
 
   function handleCartValue(e) {
