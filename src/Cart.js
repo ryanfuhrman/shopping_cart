@@ -27,8 +27,8 @@ function Cart({ cartItems }) {
       <ul>
         {cartList.map((item) => {
           return (
-            <li key={item.count} id={item.count}>
-              {item.count}
+            <li key={item.id} id={item.id}>
+              {item.id}
             </li>
           );
         })}
