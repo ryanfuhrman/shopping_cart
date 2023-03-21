@@ -11,7 +11,7 @@ function App() {
 
   useEffect(() => {
     async function getData() {
-      const response = await fetch("https://fakestoreapi.com/products");
+      const response = await fetch("https://api.escuelajs.co/api/v1/products");
 
       response.json().then((data) => {
         setShoppingData(data);
@@ -27,7 +27,7 @@ function App() {
 
   useEffect(() => {
     localStorage.setItem("items", JSON.stringify(cartItems));
-    console.log(JSON.parse(localStorage.getItem("items")));
+    // console.log(cartItems);
   }, [cartItems]);
 
   function handleCartItems(id, count) {
@@ -48,7 +48,7 @@ function App() {
               />
             }
           />
-          <Route path="/cart" element={<Cart cart={cartItems} />} />
+          <Route path="/cart" element={<Cart cartItems={cartItems} />} />
           <Route
             path="/item/:id"
             element={<ItemDetail handleCartItems={handleCartItems} />}
