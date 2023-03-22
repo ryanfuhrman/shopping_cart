@@ -3,7 +3,6 @@ import React, { useState, useEffect } from "react";
 function Cart({ cartItems }) {
   const [cartList, setCartList] = useState([]);
 
-  // if two items in cart have same id, combine them
   function fetchItems() {
     cartItems.map((item) => {
       const fetchData = async () => {
@@ -25,12 +24,17 @@ function Cart({ cartItems }) {
     fetchItems();
   }, []);
 
-  useEffect(() => {
+  function sortCartList() {
     const sortedList = cartList.sort((a, b) => {
       return a.data.id - b.data.id;
     });
     setCartList(sortedList);
-    console.log(cartList);
+  }
+
+  // if two items in cart have same id, combine them
+
+  useEffect(() => {
+    sortCartList();
   }, [cartList]);
 
   function updateCount() {}

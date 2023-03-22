@@ -31,7 +31,25 @@ function App() {
   }, [cartItems]);
 
   function handleCartItems(id, count) {
-    setCartItems([...cartItems, { id, count }]);
+    let updatedList = [...cartItems];
+    if (updatedList.length === 0) {
+      updatedList.push({ id, count });
+    } else {
+      const findId = updatedList.filter((item) => {
+        return item.id === id;
+      });
+      if (findId.length === 0) {
+        updatedList = [...updatedList, { id, count }];
+      } else {
+        updatedList.map((item) => {
+          if (item.id === id) {
+            item.count = Number(item.count) + Number(count);
+          }
+        });
+      }
+    }
+
+    setCartItems([...updatedList]);
   }
 
   return (
