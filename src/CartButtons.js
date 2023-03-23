@@ -3,7 +3,7 @@ import React, { useState, useEffect } from "react";
 import "./CartButtons.css";
 
 function Item({ handleCartItems }) {
-  const [cart, setCart] = useState(0);
+  const [cart, setCart] = useState(1);
 
   function handleCartValue(e) {
     setCart(e.target.value);
@@ -11,7 +11,7 @@ function Item({ handleCartItems }) {
 
   function lowerCount(e) {
     let currentValue = e.target.nextSibling.value;
-    currentValue > 0 && setCart(Number(currentValue) - 1);
+    currentValue > 1 && setCart(Number(currentValue) - 1);
   }
 
   function raiseCount(e) {
@@ -37,7 +37,7 @@ function Item({ handleCartItems }) {
           value={cart}
           onChange={handleCartValue}
           className="cart-input"
-          min="0"
+          min="1"
         />
         <button onClick={raiseCount} className="raise-cart" type="button">
           +
