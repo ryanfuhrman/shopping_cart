@@ -15,8 +15,10 @@ function ItemDetail({ handleCartItems }) {
   });
 
   const fetchItem = async (id) => {
-    const fetchItem = await fetch(`https://fakestoreapi.com/products/${id}`);
-    const item = await fetchItem.json();
+    const response = await fetch(
+      `https://api.escuelajs.co/api/v1/products/${id}`
+    );
+    const item = await response.json();
     setItem(item);
     setIsLoading(false);
   };
@@ -25,7 +27,7 @@ function ItemDetail({ handleCartItems }) {
     <div className="item-detail" id={id}>
       <h1 className="title">{item.title}</h1>
       <p className="price">{`$${item.price}`}</p>
-      <img src={item.image} className="image" />
+      <img src={item.images[0]} className="image" />
       <CartButtons
         cartID={id}
         itemName={item.title}
