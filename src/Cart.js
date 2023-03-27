@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import "./Cart.css";
 
 function Cart({ cartItems }) {
   const [cartList, setCartList] = useState([]);
@@ -31,30 +32,62 @@ function Cart({ cartItems }) {
     setCartList(sortedList);
   }
 
-  // if two items in cart have same id, combine them
-
   useEffect(() => {
     sortCartList();
   }, [cartList]);
 
-  function updateCount() {}
+  function handleDeleteItem(e) {
+    e.preventDefault();
+    console.log(e.target[0].id);
+  }
+
+  function updateValue(e) {
+    console.log(e);
+  }
+
+  function lowerCount(e) {
+    console.log(e.target);
+    let currentValue = e.target.nextSibling.value;
+    // currentValue > 1 && setCart(Number(currentValue) - 1);
+  }
+
+  function raiseCount(e) {
+    let currentValue = e.target.previousSibling.value;
+    // setCart(Number(currentValue) + 1);
+  }
 
   return (
     <div>
-      <ul>
+      <h1>Cart</h1>
+      <ul className="cart-list">
         {cartList.map(({ data, count }) => {
           return (
-            <li key={data.id} id={data.id}>
-              <img src={data.images[0]} />
+            <li key={data.id} id={data.id} className="cart-item">
+              <img src={data.images[0]} className="item-image" />
               <h4>{data.title}</h4>
-              <p>{count}</p>
-              <form className="buttons">
+              <form className="buttons" onSubmit={handleDeleteItem}>
+                <button
+                  onClick={lowerCount}
+                  className="lower-cart"
+                  type="button"
+                >
+                  -
+                </button>
                 <input
                   type="number"
-                  onChange={updateCount}
+                  onChange={updateValue}
                   value={count}
+                  className="item-count"
+                  id={data.id}
                 ></input>
-                <button>Remove Item</button>
+                <button
+                  onClick={raiseCount}
+                  className="raise-cart"
+                  type="button"
+                >
+                  +
+                </button>
+                <button className="remove-button">Remove Item</button>
               </form>
             </li>
           );
